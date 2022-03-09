@@ -1,0 +1,153 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4942,        145]
+NotebookOptionsPosition[      4651,        132]
+NotebookOutlinePosition[      4988,        147]
+CellTagsIndexPosition[      4945,        144]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "[", "x_", "]"}], ":=", 
+  RowBox[{
+   FractionBox["2", 
+    RowBox[{"3", 
+     RowBox[{"Zeta", "[", "3", "]"}]}]], 
+   SuperscriptBox["x", "3"], 
+   RowBox[{"NIntegrate", "[", 
+    RowBox[{
+     FractionBox[
+      SuperscriptBox["t", "2"], 
+      RowBox[{
+       RowBox[{"Exp", "[", 
+        RowBox[{"x", 
+         SqrtBox[
+          RowBox[{"1", "+", 
+           SuperscriptBox["t", "2"]}]]}], "]"}], "+", "1"}]], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "Infinity"}], "}"}]}], 
+    "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "[", "x_", "]"}], ":=", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"2", 
+     RowBox[{"Zeta", "[", "3", "]"}]}]], 
+   SuperscriptBox["x", "3"], 
+   RowBox[{"NIntegrate", "[", 
+    RowBox[{
+     FractionBox[
+      SuperscriptBox["t", "2"], 
+      RowBox[{
+       RowBox[{"Exp", "[", 
+        RowBox[{"x", 
+         SqrtBox[
+          RowBox[{"1", "+", 
+           SuperscriptBox["t", "2"]}]]}], "]"}], "-", "1"}]], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "Infinity"}], "}"}]}], 
+    "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "fname", "=", 
+   "\"\</Users/yiguo/GoogleDrive/Research/UCSD/Daniel Green/Axion Muon \
+Coupling/Code/n_f.txt\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fout", "=", 
+   RowBox[{"OpenWrite", "[", "fname", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"WriteString", "[", 
+   RowBox[{"fout", ",", "\"\<x\\tn_boson\\n\>\""}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"logx", "=", 
+    RowBox[{"-", "4"}]}], ",", 
+   RowBox[{"logx", "<", "2"}], ",", 
+   RowBox[{"logx", "=", 
+    RowBox[{"logx", "+", "0.0001"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"x", "=", 
+     RowBox[{"10", "^", "logx"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"WriteString", "[", 
+     RowBox[{"fout", ",", 
+      RowBox[{"FortranForm", "[", "x", "]"}], ",", "\"\<\\t\>\"", ",", 
+      RowBox[{"FortranForm", "[", 
+       RowBox[{"f", "[", "x", "]"}], "]"}], ",", "\"\<\\n\>\""}], "]"}]}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Close", "[", "fout", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "fname", "=", 
+     "\"\</Users/yiguo/GoogleDrive/Research/UCSD/Daniel Green/Axion Muon \
+Coupling/Code/n_b.txt\>\""}], ";", "\[IndentingNewLine]", 
+    RowBox[{"fout", "=", 
+     RowBox[{"OpenWrite", "[", "fname", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"WriteString", "[", 
+     RowBox[{"fout", ",", "\"\<x\\tn_boson\\n\>\""}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"logx", "=", 
+        RowBox[{"-", "4"}]}], ",", 
+       RowBox[{"logx", "<", "2"}], ",", 
+       RowBox[{"logx", "=", 
+        RowBox[{"logx", "+", "0.0001"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"x", "=", 
+         RowBox[{"10", "^", "logx"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"WriteString", "[", 
+         RowBox[{"fout", ",", 
+          RowBox[{"FortranForm", "[", "x", "]"}], ",", "\"\<\\t\>\"", ",", 
+          RowBox[{"FortranForm", "[", 
+           RowBox[{"b", "[", "x", "]"}], "]"}], ",", "\"\<\\n\>\""}], 
+         "]"}]}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+     RowBox[{"Close", "[", "fout", "]"}]}], ";"}], "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.8135156240452747`*^9, 3.813515695373933*^9}, {
+  3.8135158114207697`*^9, 3.813516058506139*^9}, {3.813516209337182*^9, 
+  3.8135162144856367`*^9}, {3.813516248902742*^9, 3.8135162520870237`*^9}, {
+  3.813516283774506*^9, 3.813516284939148*^9}, {3.813516334658864*^9, 
+  3.8135164539664583`*^9}, {3.813516504540168*^9, 3.813516522674439*^9}, {
+  3.813516593992639*^9, 3.81351667869449*^9}, {3.8135170938496647`*^9, 
+  3.813517113149795*^9}},
+ CellLabel->
+  "In[987]:=",ExpressionUUID->"18a32b23-2b87-4b07-a9cd-d0ac882b8ef9"]
+},
+WindowSize->{808, 755},
+WindowMargins->{{Automatic, 23}, {Automatic, 19}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4089, 110, 572, "Input",ExpressionUUID->"18a32b23-2b87-4b07-a9cd-d0ac882b8ef9"]
+}
+]
+*)
+
